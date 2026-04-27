@@ -3,7 +3,7 @@ import json
 
 FILE_NAME = "tasks.json"
 
-# Load tasks from file
+
 def load_tasks():
     if not os.path.exists(FILE_NAME):
         return []
@@ -13,13 +13,11 @@ def load_tasks():
             return []
         return json.load(content)
     
-
-# Save tasks to file
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
-        json.dump(tasks,f,indent =2)
+        json.dump(tasks,f,indent = 2)
 
-# Show tasks
+
 def view_tasks(tasks):
     if not tasks:
         print("\nNo tasks found!")
@@ -28,15 +26,15 @@ def view_tasks(tasks):
     for i, task in enumerate(tasks):
         print(f"{i+1}. {task}")
 
-# Add task
+
 def add_task(tasks):
     task = input("Enter new task: ")
     due = input("Enter due date (e.g. 30-Apr): ")
     tasks.append(f"{task} [Due: {due}]")
     save_tasks(tasks)
-    print("Task added!")
+    print("Task Added!")
 
-# Mark complete
+
 def mark_complete(tasks):
     view_tasks(tasks)
     try:
@@ -46,8 +44,7 @@ def mark_complete(tasks):
         print("Task marked as complete!")
     except:
         print("Invalid input!")
-
-# Delete task
+        
 def delete_task(tasks):
     view_tasks(tasks)
     try:
@@ -58,7 +55,7 @@ def delete_task(tasks):
     except(ValueError,IndexError):
         print("Invalid input!")
 
-# Main program
+
 def main():
     tasks = load_tasks()
 
