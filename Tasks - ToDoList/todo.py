@@ -11,7 +11,7 @@ def load_tasks():
         content = f.read().strip()
         if not content:
             return []
-        return json.load(content)
+        return json.loads(content)
     
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
